@@ -15,20 +15,63 @@
 */
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Game.h"
 
 int main() {
 	//vars and decs
-	bool gamePlay = true;
+	bool play = true;
 	Game currentGame;
+	int numOfGuesses, rangeOfInts;
 
 
 	//run
 	do {
+		bool inGamePlay = true;
+		std::string gameGuesses;
+		int totalCorrect = 0;
+		char playAgain;
+		std::cout << "Enter the number of Integers (n): " << std::endl;
+		std::cin >> numOfGuesses;
+		std::cout << "Enter the range of Integers from 1 to (m): " << std::endl;
+		std::cin >> rangeOfInts;
+
+		currentGame.setGuesses(numOfGuesses);
+		currentGame.setMaxRange(rangeOfInts);
+		currentGame.setUserList();
+
+		while (inGamePlay)
+		{
+			std::cout << "Enter your guesses for the " <<
+				currentGame.getNumOfInts() <<
+				" integers in the range from 1 to " <<
+				currentGame.getMaxRange() <<
+				" that have been selected: " << std::endl;
+			std::getline(std::cin, gameGuesses);
+			currentGame.parseInput(gameGuesses);
+			totalCorrect = currentGame.compareGeussesToList();
+
+			if (totalCorrect == currentGame.getNumOfInts())
+			{
+				std::cout << "You are correct!  Play again?: " << std::endl;
+				std::cin >> playAgain;
+				if (playAgain == 'y' || playAgain == 'Y')
+				{
+					currentGame.clearAll();
+					inGamePlay = false;
+					break;
+				}
+				else {
+					inGamePlay = false;
+					play = false;
+				}
+			}
+		}
 
 
+	} while (play);
 
-	} while (gamePlay);
+	std::cout << "Good-Bye!" << std::endl;
 
 	return 0;
 }

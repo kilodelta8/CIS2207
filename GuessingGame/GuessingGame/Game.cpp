@@ -16,25 +16,26 @@
 */
 #include <vector>
 #include <cstdlib>
+#include <string>
 #include "Game.h"
 
 Game::Game() {}
 
-bool Game::setNumOfInts(int num) {
+void Game::setNumOfInts(int num) {
 	numOfInts = num;
 }
 
-bool Game::setNumOfEachInts(int num) {
-	numOfEachInts = num;
+void Game::setMaxRange(int num) {
+	rangeMax = num;
 }
 
 void Game::setGuesses(int numOfGuesses) {
 	guesses.push_back(numOfGuesses);
 }
 
-void Game::setUserList(int userListMax) {
-	for (int i = 0; i < userListMax; i++) {
-		int num = (rand() % userListMax);
+void Game::setUserList() {
+	for (int i = 0; i < rangeMax; i++) {
+		int num = (rand() % rangeMax);
 		if (isInList(num)) {
 			i--;
 		}
@@ -49,8 +50,8 @@ int Game::getNumOfInts() const {
 	return numOfInts;
 }
 
-int Game::getNumOfGuesses() const {
-	return numOfEachInts;
+int Game::getMaxRange() const {
+	return rangeMax;
 }
 
 std::vector<int> Game::getGuesses() const {
@@ -84,4 +85,20 @@ int Game::compareGeussesToList() {
 		}
 	}
 	return counter;
+}
+
+void Game::parseInput(std::string str) {
+	for (int i = 0; i < str.length(); i++) {
+		if (isdigit(str.at(i)))
+		{
+			guesses.push_back(str.at(i));
+		}
+	}
+}
+
+void Game::clearAll() {
+	numOfInts = 0;
+	rangeMax = 0;
+	guesses.clear();
+	list.clear();
 }

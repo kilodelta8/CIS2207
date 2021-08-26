@@ -24,7 +24,7 @@
 class Game {
 private:
 	int numOfInts;
-	int numOfEachInts;
+	int rangeMax;
 	std::vector<int> guesses;
 	std::vector<int> list;
 public:
@@ -32,20 +32,22 @@ public:
 	Game();
 
 	//setters
-	bool setNumOfInts(int num);
-	bool setNumOfEachInts(int num);
+	void setNumOfInts(int num);
+	void setMaxRange(int num);
 	void setGuesses(int numOfGuesses);
-	void setUserList(int userListMax);
+	void setUserList();
 
 	//getters
 	int getNumOfInts() const;
-	int getNumOfGuesses() const;
+	int getMaxRange() const;
 	std::vector<int> getGuesses() const;
 	std::vector<int> getUserList() const;
 
 	//others
 	bool isInList(int num);
 	int compareGeussesToList();
+	void parseInput(std::string str);
+	void clearAll();
 };
 
 #endif
