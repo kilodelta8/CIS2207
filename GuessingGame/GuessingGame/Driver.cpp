@@ -1,7 +1,6 @@
-/*
-* John Durham
-* CIS 2207.501
-* 08/23/2021
+/** @author John Durham */
+/** @date 08/23/2021 */
+/* CIS 2207.501
 * Design and implement an ADT for a one-person guessing game that chooses n random integers in the range of 1 to m and asks the user to guess them.  The same integer might be chosen more than once.  For example, the game might choose the following four integers that range from 1 to 10: 4, 6, 1, 6.
 * The following interactions could occur between the user and the game, after the user has specified the integers m and n:
 *   Enter the Number of Integers (n): 4
@@ -18,60 +17,73 @@
 #include <string>
 #include "Game.h"
 
+
 int main() {
 	//vars and decs
-	bool play = true;
-	Game currentGame;
-	int numOfGuesses, rangeOfInts;
+	bool game = true;
+	int numGuesses, maxRange;
+	std::string strInput;
+	std::vector<int> guesses;
 
-
-	//run
 	do {
-		bool inGamePlay = true;
-		std::string gameGuesses;
-		int totalCorrect = 0;
-		char playAgain;
-		std::cout << "Enter the number of Integers (n): " << std::endl;
-		std::cin >> numOfGuesses;
-		std::cout << "Enter the range of Integers from 1 to (m): " << std::endl;
-		std::cin >> rangeOfInts;
+		std::cout << "Enter the number of guesses you wish to provide at a time: " << std::endl;
+		std::cin >> numGuesses;
+		std::cout << "Enter the maximum range of numbers to geuss from 1 to (x): " << std::endl;
+		std::cin >> maxRange;
 
-		currentGame.setGuesses(numOfGuesses);
-		currentGame.setMaxRange(rangeOfInts);
-		currentGame.setUserList();
-
-		while (inGamePlay)
+		Game newGame(numGuesses, maxRange);
+		bool nestedGame = true;
+		while (nestedGame) 
 		{
-			std::cout << "Enter your guesses for the " <<
-				currentGame.getNumOfInts() <<
-				" integers in the range from 1 to " <<
-				currentGame.getMaxRange() <<
-				" that have been selected: " << std::endl;
-			std::getline(std::cin, gameGuesses);
-			currentGame.parseInput(gameGuesses);
-			totalCorrect = currentGame.compareGeussesToList();
-
-			if (totalCorrect == currentGame.getNumOfInts())
+			std::cout << "Enter your guess(es): " << std::endl;
+			getline(std::cin, strInput);
+			for (int i = 0; i < strInput.length(); i++)
 			{
-				std::cout << "You are correct!  Play again?: " << std::endl;
-				std::cin >> playAgain;
-				if (playAgain == 'y' || playAgain == 'Y')
+				std::cout << strInput.at(i) << std::endl;
+				if (isdigit(i))
 				{
-					currentGame.clearAll();
-					inGamePlay = false;
-					break;
+					guesses.push_back(i);
 				}
-				else {
-					inGamePlay = false;
-					play = false;
+				else if (!isspace(i))
+				{
+					continue;
 				}
 			}
-		}
 
+			int matches = newGame.compare(guesses);
+			char input;
+			std::cout << "matches: " << matches << std::endl;
+			if (matches == newGame.getNumOfGuesses())
+			{
+				std::cout << "Congrats! All " << newGame.getNumOfGuesses() << " of your geusses were correct!" << std::endl;
+				std::cout << "Wanna play again?: " << std::endl;
+				std::cin >> input;
+				if (input == 'y' || input == 'Y')
+				{
+					//setup new game
+					nestedGame = false;
+					guesses.clear();
+				}
+				else
+				{
+					//end game
+					nestedGame = false;
+					game = false;
+				}
+			}
+			else
+			{
+				std::cout << "Sorry, only " << newGame.getNumOfGuesses() << " of your geusses were correct! Try again." << std::endl;
+			}
+			guesses.clear();
+			
+		} 
 
-	} while (play);
+	} while (game);
 
-	std::cout << "Good-Bye!" << std::endl;
+	std::cout << "Goodbye!" << std::endl;
 
 	return 0;
 }
+
+

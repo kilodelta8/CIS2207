@@ -20,33 +20,29 @@
 
 #include <vector>
 
-
+/** @class */
 class Game {
 private:
-	int numOfInts;
-	int rangeMax;
-	std::vector<int> guesses;
-	std::vector<int> list;
+	int numberOfGuesses;                //amount of guesses expected at a time
+	int rangeMaxOfList;              //the maximum range of the list
+	std::vector<int> winningNums;    //winning numbers selected from the list (or comparable)
 public:
-	//constructor
+	//constructors
 	Game();
+	Game(int numGuesses, int maxRange);
 
 	//setters
-	void setNumOfInts(int num);
-	void setMaxRange(int num);
-	void setGuesses(int numOfGuesses);
-	void setUserList();
+	void setNumberOfGuesses(int num);
+	void setMaxRangeOfList(int num);
 
 	//getters
-	int getNumOfInts() const;
-	int getMaxRange() const;
-	std::vector<int> getGuesses() const;
-	std::vector<int> getUserList() const;
+	int getNumOfGuesses() const;
+	int getMaxRangeOfList() const;
+	std::vector<int> getWinningNums() const;
 
 	//others
-	bool isInList(int num);
-	int compareGeussesToList();
-	void parseInput(std::string str);
+	int compare(std::vector<int>& guesses);
+	void generateWinningNumbers();
 	void clearAll();
 };
 
