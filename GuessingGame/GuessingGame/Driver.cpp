@@ -40,7 +40,7 @@ int main() {
 		//prep and start the game
 		Game newGame(numGuesses, maxRange);
 		bool nestedGame = true;
-		std::cin.ignore();  //clean the buffer
+		std::cin.ignore();  //clear the buffer of sorts....
 		do 
 		{
 			//prompt for guesses, parse the input into vector
@@ -50,12 +50,12 @@ int main() {
 
 			//check for matches
 			int matches = newGame.compare(guesses);
-			char input;
-			//std::cout << "matches: " << matches << std::endl;
+
 			//if all the geusses were correct prompt to play again
 			if (matches == newGame.getNumOfGuesses())
 			{
-				std::cout << "Congrats! All " << newGame.getNumOfGuesses() << " of your geusses were correct!" << std::endl;
+				char input;
+				std::cout << "Congrats! All " << matches << " of your geusses were correct!" << std::endl;
 				std::cout << "Wanna play again?: " << std::endl;
 				std::cin >> input;
 				if (input == 'y' || input == 'Y')
@@ -75,13 +75,23 @@ int main() {
 			else
 			{
 				//if not all matches were made
-				std::cout << "Sorry, only " << newGame.getNumOfGuesses() << " of your geusses were correct! Try again." << std::endl; //TODO - something isnt right here
+				std::cout << "Sorry, only " << matches << " of your geusses were correct! Try again." << std::endl; 
 			}
 			guesses.clear(); //clear the guesses vec
 			
 		} while (nestedGame);
 
+		//only clear the screen if the game is still happening
+		if(game)
+		{ 
+			system("CLS");  //clear the screen
+		}
+
 	} while (game);
+
+
+	//salutations
+	std::cout << "Good-Bye!!" << std::endl;
 
 
 	return 0;

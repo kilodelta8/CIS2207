@@ -65,6 +65,3 @@ void Game::clearAll() {
 	rangeMaxOfList = 0;
 	winningNums.clear();
 }
-
-//destructor
-Game::~Game() { std::cout << "Goodbye!" << std::endl; }

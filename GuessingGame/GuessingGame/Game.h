@@ -46,8 +46,7 @@ public:
 	void generateWinningNumbers();
 	void clearAll();
 
-	//destructor
-	~Game();
+	
 };
 
 #endif
