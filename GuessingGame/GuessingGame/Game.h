@@ -38,12 +38,16 @@ public:
 	//getters
 	int getNumOfGuesses() const;
 	int getMaxRangeOfList() const;
-	std::vector<int> getWinningNums() const;
+	std::vector<int> getWinningNums();
+	void printWinningNumbers();
 
 	//others
 	int compare(std::vector<int>& guesses);
 	void generateWinningNumbers();
 	void clearAll();
+
+	//destructor
+	~Game();
 };
 
 #endif

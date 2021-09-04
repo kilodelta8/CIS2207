@@ -15,7 +15,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
 #include "Game.h"
+
+//proto
+void parseUserInput(std::vector<int>& vec, const std::string& str);
 
 
 int main() {
@@ -25,34 +29,30 @@ int main() {
 	std::string strInput;
 	std::vector<int> guesses;
 
+	//pregame setup
 	do {
 		std::cout << "Enter the number of guesses you wish to provide at a time: " << std::endl;
 		std::cin >> numGuesses;
 		std::cout << "Enter the maximum range of numbers to geuss from 1 to (x): " << std::endl;
 		std::cin >> maxRange;
 
+
+		//prep and start the game
 		Game newGame(numGuesses, maxRange);
 		bool nestedGame = true;
-		while (nestedGame) 
+		std::cin.ignore();  //clean the buffer
+		do 
 		{
+			//prompt for guesses, parse the input into vector
 			std::cout << "Enter your guess(es): " << std::endl;
 			getline(std::cin, strInput);
-			for (int i = 0; i < strInput.length(); i++)
-			{
-				std::cout << strInput.at(i) << std::endl;
-				if (isdigit(i))
-				{
-					guesses.push_back(i);
-				}
-				else if (!isspace(i))
-				{
-					continue;
-				}
-			}
+			parseUserInput(guesses, strInput);
 
+			//check for matches
 			int matches = newGame.compare(guesses);
 			char input;
-			std::cout << "matches: " << matches << std::endl;
+			//std::cout << "matches: " << matches << std::endl;
+			//if all the geusses were correct prompt to play again
 			if (matches == newGame.getNumOfGuesses())
 			{
 				std::cout << "Congrats! All " << newGame.getNumOfGuesses() << " of your geusses were correct!" << std::endl;
@@ -63,27 +63,46 @@ int main() {
 					//setup new game
 					nestedGame = false;
 					guesses.clear();
+					newGame.clearAll();
 				}
 				else
 				{
-					//end game
+					//or end game
 					nestedGame = false;
 					game = false;
 				}
 			}
 			else
 			{
-				std::cout << "Sorry, only " << newGame.getNumOfGuesses() << " of your geusses were correct! Try again." << std::endl;
+				//if not all matches were made
+				std::cout << "Sorry, only " << newGame.getNumOfGuesses() << " of your geusses were correct! Try again." << std::endl; //TODO - something isnt right here
 			}
-			guesses.clear();
+			guesses.clear(); //clear the guesses vec
 			
-		} 
+		} while (nestedGame);
 
 	} while (game);
 
-	std::cout << "Goodbye!" << std::endl;
 
 	return 0;
 }
 
 
+
+
+//FUNCTIONS
+void parseUserInput(std::vector<int>& vec, const std::string& str)
+{
+	std::stringstream ss;
+	ss << str;
+	int found;
+	std::string temp;
+
+	while (std::getline(ss, temp, ' ')) {
+		if (std::stringstream(temp) >> found)
+		{
+			//std::cout << found << std::endl;
+			vec.push_back(found);
+		}
+	}
+}
