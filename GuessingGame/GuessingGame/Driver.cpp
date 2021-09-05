@@ -1,6 +1,8 @@
+/** @file Driver.cpp one person guessing game driver implemetataion file */
 /** @author John Durham */
 /** @date 08/23/2021 */
-/* CIS 2207.501
+/** @version 0.0.3 */
+/* CIS 2207.501 
 * Design and implement an ADT for a one-person guessing game that chooses n random integers in the range of 1 to m and asks the user to guess them.  The same integer might be chosen more than once.  For example, the game might choose the following four integers that range from 1 to 10: 4, 6, 1, 6.
 * The following interactions could occur between the user and the game, after the user has specified the integers m and n:
 *   Enter the Number of Integers (n): 4
@@ -18,18 +20,18 @@
 #include <sstream>
 #include "Game.h"
 
-//proto
+//function prototype
 void parseUserInput(std::vector<int>& vec, const std::string& str);
 
 
 int main() {
-	//vars and decs
-	bool game = true;
-	int numGuesses, maxRange;
-	std::string strInput;
-	std::vector<int> guesses;
+	
+	bool game = true;          //main game loop bool
+	int numGuesses, maxRange;  //user input integers (could probably use one only)
+	std::string strInput;      //string for getline() user input
+	std::vector<int> guesses;  //std::vector to hold user guesses each pass
 
-	//pregame setup
+	
 	do {
 		std::cout << "Enter the number of guesses you wish to provide at a time: " << std::endl;
 		std::cin >> numGuesses;
@@ -37,10 +39,10 @@ int main() {
 		std::cin >> maxRange;
 
 
-		//prep and start the game
-		Game newGame(numGuesses, maxRange);
-		bool nestedGame = true;
-		std::cin.ignore();  //clear the buffer of sorts....
+		Game newGame(numGuesses, maxRange);      //instantiate a new Game object
+		bool nestedGame = true;                  //bool to keep the inner game loop running
+		std::cin.ignore();                       //clear the buffer of sorts....
+
 		do 
 		{
 			//prompt for guesses, parse the input into vector
@@ -60,23 +62,24 @@ int main() {
 				std::cin >> input;
 				if (input == 'y' || input == 'Y')
 				{
-					//setup new game
+					//if so, setup new game
 					nestedGame = false;
 					guesses.clear();
 					newGame.clearAll();
 				}
 				else
 				{
-					//or end game
+					//if not, end the game
 					nestedGame = false;
 					game = false;
 				}
 			}
 			else
 			{
-				//if not all matches were made
+				//if all matches were not made
 				std::cout << "Sorry, only " << matches << " of your geusses were correct! Try again." << std::endl; 
 			}
+
 			guesses.clear(); //clear the guesses vec
 			
 		} while (nestedGame);
@@ -100,7 +103,15 @@ int main() {
 
 
 
-//FUNCTIONS
+/**********************************FUNCTION IMPLEMENTATION******************************************/
+
+
+/**
+* Parses the user input, selecting only integers and storing them into a std::vector
+* @param vec A standard vector to store data parsed from the string parameter
+* @param str A string of user input collected from getline()
+*/
+//modified for use from source: https://www.geeksforgeeks.org/extract-integers-string-c/
 void parseUserInput(std::vector<int>& vec, const std::string& str)
 {
 	std::stringstream ss;
@@ -111,7 +122,7 @@ void parseUserInput(std::vector<int>& vec, const std::string& str)
 	while (std::getline(ss, temp, ' ')) {
 		if (std::stringstream(temp) >> found)
 		{
-			//std::cout << found << std::endl;
+			//add to current guesses vector
 			vec.push_back(found);
 		}
 	}
