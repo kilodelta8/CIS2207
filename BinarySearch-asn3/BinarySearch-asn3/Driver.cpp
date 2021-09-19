@@ -18,8 +18,10 @@ const int MIN = 0;
 
 int main() {
 
+	//string to hold user input and char for sort choice
 	std::string input;
 	char choice;
+	//string array initialized with strings
 	std::string strArr[] = { "This is string one.",
 						"Oddly, this is string two!",
 						"I bet you can just about guess this one?",
@@ -32,6 +34,7 @@ int main() {
 						"I legit can't stand it anymore."};
 
 
+	//prompt user all the pertinent things
 	std::cout << "Enter a string to search for and we will sort this bad boy and search it.\n";
 	std::cout << "Enter the search phrase now: ";
 	getline(std::cin, input);
@@ -43,12 +46,14 @@ int main() {
 	std::cout << "choose wisely: ";
 	std::cin >> choice;
 
+	//a little bit of error checking
 	if (choice != 'b' && choice != 'B' || choice != 's' && choice != 'S')
 	{
 		std::cout << "You have entered an unknown value, so I will choose the method of sort for you." << std::endl;
 		choice = 'B';
 	}
 
+	//deep sigh......you already know
 	switch (choice)
 	{
 	case 'b':

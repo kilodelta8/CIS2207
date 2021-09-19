@@ -1,11 +1,21 @@
+/** @file Search.cpp implemetataion file */
+/** @author John Durham */
+/** @date 09/16/2021 */
+/** @version 0.0.1 */
+/* CIS 2207.501
+* You are asked to complete Programming Problem 3 on page 94 of your textbook.
+* Problem 3: Implement the binarySearch algorithm presented in this chapter for an array of string.
+* This program is meant to apply what you have learned in this topic.
+* Make sure to implement the binarySearch algorithm presented in this chapter for the array of strings (page 70).
+* Note that the binarySearch is a recursive algorithm.
+*/
 #include "Search.h"
 
 
 /** Searches through an array of strings
 * @param 
+* @post return the index of the target if found OR -1 indicating it wasn't found
 */
-                         //arr to search    first subscript      target value 
-                         //                            last subscript
 int Search::binarySearch(std::string arr[], int first, int last, std::string target)
 {
 	int middle;
@@ -29,6 +39,7 @@ int Search::binarySearch(std::string arr[], int first, int last, std::string tar
 
 
 //======================================================================================
+/** used within bubble sort to swap values */
 void Search::swap(std::string& a, std::string& b)
 {
 	std::string temp = a;
@@ -36,7 +47,10 @@ void Search::swap(std::string& a, std::string& b)
 	b = temp;
 }
 
-
+/** bubble sort the string array 
+* @param Takes a std::string array and the size of the array
+* @post no return, just sorts the array
+*/
 void Search::bubbleSort(std::string arr[], int size)
 {
 	int maxElement, index;
@@ -52,7 +66,10 @@ void Search::bubbleSort(std::string arr[], int size)
 	}
 }
 
-
+/** selection sorts the string array 
+* @param Takes a std::string array and the size of the array
+* @post no return, just sorts the array
+*/
 void Search::selectionSort(std::string arr[], int size)
 {
 	std::string minIndex, minValue;
