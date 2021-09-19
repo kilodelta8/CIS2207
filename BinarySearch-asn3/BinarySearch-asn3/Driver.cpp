@@ -12,6 +12,9 @@
 #include <iostream>
 #include "Search.h"
 
+//array size
+const int SIZE = 10;
+const int MIN = 0;
 
 int main() {
 
@@ -50,12 +53,12 @@ int main() {
 	{
 	case 'b':
 	case 'B':
-		Search::bubbleSort(strArr, 10);
+		Search::bubbleSort(strArr, SIZE);
 		std::cout << "The array has been sorted using Bubble Sort." << std::endl;
 		break;
 	case 's':
 	case 'S':
-		Search::selectionSort(strArr, 10);
+		Search::selectionSort(strArr, SIZE);
 		std::cout << "The array has been sorted using Selection Sort." << std::endl;
 		break;
 	}
@@ -63,7 +66,7 @@ int main() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << "Now searching the array using binary search methods... .. ..   ..   ..      ..      ." << std::endl;
-	int found = Search::binarySearch(strArr, 0, 10, input);
+	int found = Search::binarySearch(strArr, MIN, SIZE, input);
 	if (found == -1)
 		std::cout << "Target not found" << std::endl;
 	else
