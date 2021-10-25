@@ -4,88 +4,82 @@
 #include <sstream>
 #include <stdlib.h>
 #include "Game.h"
+#include <map>
 
 //proto
 void parseUserInput(std::vector<int>& vec, const std::string& str);
+std::vector<int> twoNumSum(std::vector<int> arr, int target);
 
 int main() {
+	std::vector<int> vec = { 5, 8, 2, 4, 7, 10, -1, 6 }; //8
+	int targetSum = 10;
+	std::vector<int> vec2 = {twoNumSum(vec, targetSum)};
 
-	Game gameOne;
-	Game gameTwo(1, 10);
-	int input;
-	std::vector<int> guess;
-	std::string guesses;
+
+
+
+
+
+
+
+	//std::cout << vec2.size() << std::endl;
+	std::cout << "0th <> 1st" << std::endl;
+	if (vec2.size() == 2)
+	{
+		std::cout << vec2[0] << " " << vec2[1] << std::endl;
+	}
+	else if (vec2.size() == 1)
+	{
+		std::cout << vec2[0] << std::endl;
+	}
+	else if ( vec2.size() == 0)
+	{
+		std::cout << "the vector is zero" << std::endl;
+	}
+	else if (vec2.size() > 2)
+	{
+		std::cout << "the vector is bigger than 2 at size: " << vec2.size() << std::endl;
+		/*for (int i = 0; i < vec2.size(); i++)
+		{
+			std::cout << vec2[i] << " - ";
+		}*/
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------------------" << std::endl;
+	}
+	else
+	{
+		std::cout << "Strange happening Dr Durham, Strange happenings. . . ." << std::endl;
+	}
+
+
+
+
 	
-
-	std::cout << "Enter the number of guesses: " << std::endl;
-	std::cin >> input;
-	gameOne.setNumberOfGuesses(input);
-	std::cout << "Enter the range: " << std::endl;
-	std::cin >> input;
-	gameOne.setMaxRangeOfList(input);
-
-	std::cout << std::endl;
-	std::cout << "--------------------------------------------------------------------" << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "gameOne Object" << std::endl;
-	std::cout << "Number of guesses: " << gameOne.getNumOfGuesses() << std::endl
-		<< "Range of guesses:  " << gameOne.getMaxRangeOfList() << std::endl
-		<< "Winning numbers:   ";
-	std::vector<int> winningNums = gameOne.getWinningNums();
-	gameOne.printWinningNumbers();
-	std::cout << std::endl;
-	std::cin.ignore();
-	std::cout << "Enter your " << gameOne.getNumOfGuesses() << " guesses: ";
-	getline(std::cin, guesses);
-	parseUserInput(guess, guesses);
-	std::cout << "Guess vector from input: ";
-	for (int i = 0; i < guess.size(); i++)
-	{
-		std::cout << " " << guess.at(i);
-	}
-	std::cout << std::endl;
-	int matches = gameOne.compare(guess);
-	std::cout << "Matches: " << matches;
-
-	guesses = "";
-	guess.clear();
-	winningNums.clear();
-
-	std::cout << std::endl;
-	std::cout << "--------------------------------------------------------------------" << std::endl;
-	std::cout << std::endl;
-
-	std::cin.clear();
-	std::cout << "gameTwo Object" << std::endl;
-	std::cout << "Number of guesses: " << gameTwo.getNumOfGuesses() << std::endl
-		<< "Range of guesses:  " << gameTwo.getMaxRangeOfList() << std::endl
-		<< "Winning numbers:   ";
-	winningNums = gameTwo.getWinningNums();
-	gameTwo.printWinningNumbers();
-	std::cout << std::endl;
-	//std::cin.ignore();
-	std::cout << "Enter your " << gameTwo.getNumOfGuesses() << " guesses: ";
-	getline(std::cin, guesses);
-	parseUserInput(guess, guesses);
-	std::cout << "Guess vector from input: ";
-	for (int i = 0; i < guess.size(); i++)
-	{
-		std::cout << " " << guess.at(i);
-	}
-	std::cout << std::endl;
-	matches = gameTwo.compare(guess);
-	std::cout << "Matches: " << matches;
-
-	guesses = "";
-	guess.clear();
-	winningNums.clear();
-
-	std::cout << std::endl;
-	std::cout << "--------------------------------------------------------------------" << std::endl;
-	std::cout << std::endl;
-
 	return 0;
+}
+
+
+
+std::vector<int> twoNumSum(std::vector<int> arr, int target)
+{
+	std::map<int, bool> nums;
+	std::map<int, bool>::iterator it;
+	for (int i = 0; i < arr.size(); i++)
+	{
+		int potentialSum = target - arr[i];
+		it = nums.find(potentialSum);
+		//int poss = (int)it->first;
+		if (nums[it->first] == potentialSum)
+		{
+			std::cout << it->first << " " << it->second << std::endl;
+			return std::vector<int>(potentialSum, arr[i]);
+		}
+		else
+		{
+			nums[arr[i]] = true;
+		}
+	}
+	return std::vector<int>();
 }
 
 

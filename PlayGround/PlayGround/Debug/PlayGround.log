@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-C:\Users\johns\dev\CIS2207\PlayGround\PlayGround\Source.cpp(43,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\johns\dev\CIS2207\PlayGround\PlayGround\Source.cpp(72,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\johns\dev\CIS2207\PlayGround\PlayGround\Source.cpp(67,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\johns\dev\CIS2207\PlayGround\PlayGround\Source.cpp(72,26): warning C4805: '==': unsafe mix of type 'bool' and type 'int' in operation
   PlayGround.vcxproj -> C:\Users\johns\dev\CIS2207\PlayGround\Debug\PlayGround.exe
