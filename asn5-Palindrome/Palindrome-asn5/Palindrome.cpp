@@ -43,13 +43,16 @@ int Palindrome<ItemType>::getSizeOfInput() const
 	return sizeOfInput;
 }
 
+
+
 template<class ItemType>
 bool Palindrome<ItemType>::isEmpty() const
 {
+	//int szOfArr = Palindrome<ItemType>::getSizeOfArr();
 	if(sizeOfArr == 0)
 		return true;
-
-	return false;
+	else
+		return false;
 }
 
 template<class ItemType>
@@ -134,9 +137,9 @@ QueueInterface<ItemType>::~QueueInterface() {
 template<class ItemType>
 StackInterface<ItemType>::~StackInterface() {
 	std::cout << "Stack Destroyed" << std::endl;
-}*/
+}
 template<class ItemType>
 Palindrome<ItemType>::~Palindrome() 
 {
 	delete[] arr;
-}
+}*/

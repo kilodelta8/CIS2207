@@ -8,17 +8,17 @@
 const int DEFAULT_SIZE = 40;
 
 template<class ItemType>
-class Palindrome : public QueueInterface<char>, public StackInterface<char>
+class Palindrome : public QueueInterface<ItemType>, public StackInterface<ItemType>
 {
 private:
 	std::string input;
 	int sizeOfInput;
 	int sizeOfArr = 0;
-	char arr[DEFAULT_SIZE] = {0};
+	ItemType arr[DEFAULT_SIZE] = {0};
 
 public:
 	//constructor
-	Palindrome() : input("") {}
+	Palindrome() {}
 
 	//palindrome
 	void setInput(const ItemType in);
@@ -29,18 +29,20 @@ public:
 
 	//interface defintions
 	//shared???
-	bool isEmpty() const override;
+	bool isEmpty() const;
 	//queue
-	bool enqueue(const ItemType& newEntry) override;
+	bool enqueue(const ItemType& newEntry);
 	bool dequeue() override;
-	ItemType peekFront() const override;
+	ItemType peekFront() const;
 	//stack
-	bool push(const ItemType& newEntry) override;
+	bool push(const ItemType& newEntry);
 	bool pop() override;
-	ItemType peek() override;
+	ItemType peek();
 
 	//destructor
-	~Palindrome();
+	//QueueInterface<ItemType>::~QueueInterface();
+	//StackInterface<ItemType>::~StackInterface();
+	~Palindrome() { }
 };
 #endif // !PALINDROME_H
 

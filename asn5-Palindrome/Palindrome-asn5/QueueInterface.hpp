@@ -2,6 +2,7 @@
 #ifndef QUEUE_INTERFACE_HPP
 #define QUEUE_INTERFACE_HPP
 #include <iostream>
+#include "Palindrome.h"
 
 template<class ItemType>
 class QueueInterface
@@ -30,7 +31,7 @@ public:
 	virtual ItemType peekFront() const = 0;
 
 	/** Destructor - Destroy this queue and free its memory. */
-	//virtual ~QueueInterface();
+	virtual ~QueueInterface() { std::cout << "Queue Destroyed" << std::endl; };
 };
 #endif // !QUEUE_INTERFACE_HPP
 

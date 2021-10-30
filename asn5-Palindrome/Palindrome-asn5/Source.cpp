@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Palindrome.h"
-#include "QueueInterface.hpp"
-#include "StackInterface.hpp"
+//#include "QueueInterface.hpp"
+//#include "StackInterface.hpp"
 
 int main()
 {

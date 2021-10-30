@@ -8,4 +8,4 @@ Source.obj : error LNK2001: unresolved external symbol "public: virtual char __t
 Source.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall Palindrome<char>::push(char const &)" (?push@?$Palindrome@D@@UAE_NABD@Z)
 Source.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall Palindrome<char>::pop(void)" (?pop@?$Palindrome@D@@UAE_NXZ)
 Source.obj : error LNK2001: unresolved external symbol "public: virtual char __thiscall Palindrome<char>::peek(void)" (?peek@?$Palindrome@D@@UAEDXZ)
-C:\Users\johns\dev\CIS2207\Palindrome-asn5\Debug\Palindrome-asn5.exe : fatal error LNK1120: 7 unresolved externals
+C:\Users\johns\dev\CIS2207\asn5-Palindrome\Debug\Palindrome-asn5.exe : fatal error LNK1120: 7 unresolved externals

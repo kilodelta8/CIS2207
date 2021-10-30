@@ -1,7 +1,7 @@
 #pragma once
 #ifndef STACK_INTERFACE_HPP
 #define STACK_INTERFACE_HPP
-
+#include <iostream>
 
 template<class ItemType>
 class StackInterface
@@ -30,7 +30,7 @@ public:
 	virtual ItemType peek() = 0;
 
 	/** Destrucotr - Destroys the stack and frees its assigned memory. */
-	//virtual ~StackInterface();
+	virtual ~StackInterface() { std::cout << "Stack Destroyed" << std::endl; };
 };
 #endif // !STACK_INTERFACE_HPP
 
