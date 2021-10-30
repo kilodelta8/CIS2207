@@ -5,22 +5,32 @@
 #include <stdlib.h>
 #include "Game.h"
 #include <map>
+#include "ClassOne.h"
 
 //proto
 void parseUserInput(std::vector<int>& vec, const std::string& str);
 std::vector<int> twoNumSum(std::vector<int> arr, int target);
 
 int main() {
+
+	ClassOne* person = new ClassOne();
+
+	person->setName("Johnny");
+	person->setAge(38);
+	person->setWeight(255.8);
+
+	std::cout << "  Name: " << person->getName() << std::endl;
+	std::cout << "   Age: " << person->getAge() << std::endl;
+	std::cout << "Weight: " << person->getWeight() << std::endl;
+
+	delete person;
+	person = nullptr;
+
+
+	/*
 	std::vector<int> vec = { 5, 8, 2, 4, 7, 10, -1, 6 }; //8
 	int targetSum = 10;
 	std::vector<int> vec2 = {twoNumSum(vec, targetSum)};
-
-
-
-
-
-
-
 
 	//std::cout << vec2.size() << std::endl;
 	std::cout << "0th <> 1st" << std::endl;
@@ -42,14 +52,14 @@ int main() {
 		/*for (int i = 0; i < vec2.size(); i++)
 		{
 			std::cout << vec2[i] << " - ";
-		}*/
+		}
 		std::cout << std::endl;
 		std::cout << "---------------------------------------------------------" << std::endl;
 	}
 	else
 	{
 		std::cout << "Strange happening Dr Durham, Strange happenings. . . ." << std::endl;
-	}
+	}*/
 
 
 
