@@ -1,12 +1,17 @@
-*.zip
-*.zip
+.vs
+x64
+*.vcxproj
+*.filters
 *.user
-*.pdb
-*.obj
-*.log
-*.tlog
-*.lastbuildstate
-*.sln
-*.suo
-*.db
 
+\.vs
+\x64
+\*.vcxproj
+\*.filters
+\*.user
+
+/.vs
+/x64
+/*.vcxproj
+/*.filters
+/*.user
