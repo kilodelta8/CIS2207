@@ -1,6 +1,12 @@
-\PalindromeRecognition-asn5-pt1
-\PlayGround
-/PalindromeRecognition-asn5-pt1
-/PlayGround
-
+*.zip
+.zip
+.user
+.pdb
+.obj
+.log
+.tlog
+.lastbuildstate
+.sln
+.suo
+.db
 

@@ -1,7 +1,0 @@
-﻿  Driver.cpp
-  Game.cpp
-C:\Users\johns\dev\CIS2207\GuessingGame\GuessingGame\Game.cpp(76,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\johns\dev\CIS2207\GuessingGame\GuessingGame\Game.cpp(91,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\johns\dev\CIS2207\GuessingGame\GuessingGame\Game.cpp(93,21): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  GuessingGame.vcxproj -> C:\Users\johns\dev\CIS2207\GuessingGame\Debug\GuessingGame.exe
