@@ -1,12 +1,12 @@
 *.zip
-.zip
-.user
-.pdb
-.obj
-.log
-.tlog
-.lastbuildstate
-.sln
-.suo
-.db
+*.zip
+*.user
+*.pdb
+*.obj
+*.log
+*.tlog
+*.lastbuildstate
+*.sln
+*.suo
+*.db
 
