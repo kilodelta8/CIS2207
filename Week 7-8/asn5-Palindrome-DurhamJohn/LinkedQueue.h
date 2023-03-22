@@ -1,15 +1,15 @@
-/* @author  John Durham
-*  asn4-Palindrome
+/*  asn4-Palindrome
 *  23.SP.CIS.2207.501 Data Structures & Algorithms
+*  @author  John Durham
 *  @date    02/25/2023
 *  @version 0.0.1
 *  @file    LinkedQueue.h
 * -------------------------------------------------------------------------------------------------------------
-* You are asked to complete Programming Problem 3 on page 413 on your textbook. This program is meant to apply what
-  you have learned in this topic. Implement the palindrome-recognition algorithm described in Section 13.2.2 on page 398.
-  Note that the algorithm uses both a Stack and a Queue, both of which you are expected to implement for this assignment.
-  StackInterface.h in Listing 6-1 on p. 197.
-  QueueInterface.h in Listing 13-1 on p. 396.
+This code defines a templated class LinkedQueue that implements a queue data structure using a linked list. 
+The class inherits from QueueInterface which defines the interface that this class implements. The LinkedQueue 
+class also defines several helper functions that allow us to manipulate the queue's items.
+The class has a private Node object pointer headptr, which points to the first node in the linked list, and an 
+integer itemCount, which keeps track of the number of items in the queue.
 */
 #pragma once
 #ifndef LINKED_QUEUE_H
@@ -27,6 +27,7 @@ private:
 	Node<ItemType>* headptr;
 	int itemCount;
 
+	//The getNodeAt() function is a private helper function that returns a pointer to the node at the specified position.
 	Node<ItemType>* getNodeAt(int position) const
 	{
 		assert((position >= 1) && (position <= itemCount));
@@ -57,11 +58,16 @@ public:
 	ItemType replace(int position, const ItemType& newEntry) throw(PrecondViolatedExcept);
 };
 
+
+//LinkedQueue(): the default constructor which initializes headptr to nullptr and itemCount to 0.
 template<class ItemType>
 LinkedQueue<ItemType>::LinkedQueue() : headptr(nullptr), itemCount(0)
 {
 }
 
+
+//LinkedQueue(const LinkedQueue<ItemType>& aList): a copy constructor that creates a new LinkedQueue 
+//object with the same items as the given aList.
 template<class ItemType>
 LinkedQueue<ItemType>::LinkedQueue(const LinkedQueue<ItemType>& aList) : headptr(aList), itemCount(aList.getLength())
 {
@@ -88,6 +94,8 @@ LinkedQueue<ItemType>::LinkedQueue(const LinkedQueue<ItemType>& aList) : headptr
 	}
 }
 
+
+//~LinkedQueue(): a destructor that frees the memory allocated for all the nodes in the linked list.
 template<class ItemType>
 LinkedQueue<ItemType>::~LinkedQueue()
 {
@@ -96,6 +104,7 @@ LinkedQueue<ItemType>::~LinkedQueue()
 }
 
 
+//bool enqueue(const ItemType& newEntry): adds the given newEntry item to the back of the queue.
 template<class ItemType>
 bool LinkedQueue<ItemType>::enqueue(const ItemType& newEntry)
 {
@@ -117,6 +126,8 @@ bool LinkedQueue<ItemType>::enqueue(const ItemType& newEntry)
 	return true;
 }
 
+
+//bool dequeue(): removes the front item from the queue and returns true if successful, false otherwise.
 template<class ItemType>
 bool LinkedQueue<ItemType>::dequeue()
 {
@@ -134,6 +145,8 @@ bool LinkedQueue<ItemType>::dequeue()
 	}
 }
 
+
+//ItemType peekFront() const: returns the front item in the queue without removing it.
 template<class ItemType>
 ItemType LinkedQueue<ItemType>::peekFront() const
 {
@@ -143,6 +156,8 @@ ItemType LinkedQueue<ItemType>::peekFront() const
 	return headptr->getItem();
 }
 
+
+//bool isEmpty() const: returns a boolean value indicating whether the queue is empty.
 template<class ItemType>
 bool LinkedQueue<ItemType>::isEmpty() const
 {
@@ -154,6 +169,8 @@ bool LinkedQueue<ItemType>::isEmpty() const
 	}
 }
 
+
+//int getLength() const: returns the number of items in the queue.
 template<class ItemType>
 int LinkedQueue<ItemType>::getLength() const
 {
@@ -166,6 +183,8 @@ int LinkedQueue<ItemType>::getLength() const
 	return length;
 }
 
+
+//bool insert(int newPosition, const ItemType& newEntry): inserts the given newEntry item at the specified newPosition.
 template<class ItemType>
 bool LinkedQueue<ItemType>::insert(int newPosition, const ItemType& newEntry)
 {
@@ -189,6 +208,8 @@ bool LinkedQueue<ItemType>::insert(int newPosition, const ItemType& newEntry)
 	return ableToInsert;
 }
 
+
+//bool remove(int position): removes the item at the specified position.
 template<class ItemType>
 bool LinkedQueue<ItemType>::remove(int position)
 {
@@ -215,6 +236,8 @@ bool LinkedQueue<ItemType>::remove(int position)
 	return ableToRemove;
 }
 
+
+//void clear(): removes all items from the queue.
 template<class ItemType>
 void LinkedQueue<ItemType>::clear()
 {
@@ -222,6 +245,8 @@ void LinkedQueue<ItemType>::clear()
 		remove(1);
 }
 
+
+//ItemType getEntry(int position) const throw(PrecondViolatedExcept): returns the item at the specified position.
 template<class ItemType>
 ItemType LinkedQueue<ItemType>::getEntry(int position) const throw(PrecondViolatedExcept)
 {
@@ -238,6 +263,9 @@ ItemType LinkedQueue<ItemType>::getEntry(int position) const throw(PrecondViolat
 	return entry;
 }
 
+
+// Replaces the entry at the given position with the given new entry. Throws an exception if the given position is invalid.
+// Returns the replaced entry.
 template<class ItemType>
 ItemType LinkedQueue<ItemType>::replace(int position, const ItemType& newEntry) throw(PrecondViolatedExcept)
 {

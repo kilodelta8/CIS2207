@@ -5,11 +5,10 @@
 *  @version 0.0.1
 *  @file    PrecondViolatedExcept.h
 * -------------------------------------------------------------------------------------------------------------
-* You are asked to complete Programming Problem 3 on page 413 on your textbook. This program is meant to apply what
-  you have learned in this topic. Implement the palindrome-recognition algorithm described in Section 13.2.2 on page 398.
-  Note that the algorithm uses both a Stack and a Queue, both of which you are expected to implement for this assignment.
-  StackInterface.h in Listing 6-1 on p. 197.
-  QueueInterface.h in Listing 13-1 on p. 396.
+* This code defines an exception class called PrecondViolatedExcept, which is derived from the std::logic_error class. 
+  The exception is thrown when a precondition of a function is violated.
+  The PrecondViolatedExcept class has a constructor that takes a string message as an argument, which is concatenated 
+  with the prefix "Precondition Violated Exception: " and passed to the constructor of std::logic_error class.
 */
 #pragma once
 #ifndef PRECOND_VIOLATED_EXCEPT_H

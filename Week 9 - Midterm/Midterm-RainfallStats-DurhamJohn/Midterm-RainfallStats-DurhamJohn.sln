@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm-RainfallStats-DurhamJohn", "Midterm-RainfallStats-DurhamJohn.vcxproj", "{2151EF3C-D607-43EC-8727-9EE2C378BE9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Debug|x64.ActiveCfg = Debug|x64
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Debug|x64.Build.0 = Debug|x64
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Debug|x86.ActiveCfg = Debug|Win32
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Debug|x86.Build.0 = Debug|Win32
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Release|x64.ActiveCfg = Release|x64
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Release|x64.Build.0 = Release|x64
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Release|x86.ActiveCfg = Release|Win32
+		{2151EF3C-D607-43EC-8727-9EE2C378BE9D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33E64534-A05C-452B-86BA-7AA6B3F8ECFA}
+	EndGlobalSection
+EndGlobal
