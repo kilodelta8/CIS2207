@@ -81,7 +81,7 @@ void ArrayMaxHeap<ItemType>::heapCreate()
 
 
 template<class ItemType>
-ArrayMaxHeap<ItemType>::ArrayMaxHeap() : itemCount(0), maxItems(DEFAULT_CAPACITY) {}
+ArrayMaxHeap<ItemType>::ArrayMaxHeap() : itemCount(0), maxItems(DEFAULT_CAPACITY), items(std::make_unique<ItemType>()) {}
 
 
 template<class ItemType>
@@ -98,8 +98,6 @@ template<class ItemType>
 ArrayMaxHeap<ItemType>::~ArrayMaxHeap()
 {
 	clear();
-	//remove this when you get it figured out
-	delete[] items;
 }
 
 
@@ -137,6 +135,7 @@ bool ArrayMaxHeap<ItemType>::add(const ItemType& newData)
 {
 	if (itemCount < maxItems)
 	{
+		//items = std::move(newData);
 		items[itemCount] = newData;
 		itemCount++;
 		return true;

@@ -15,3 +15,9 @@ x64
 /*.vcxproj
 /*.filters
 /*.user
+
+
+.sln
+/.sln
+.grp
+/.grp
